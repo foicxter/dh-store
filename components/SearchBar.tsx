@@ -1,33 +1,30 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function SearchBar({
-    products,
-}: {
-    products: any[];
-}) {
-    const [search, setSearch] = useState("");
+export default function SearchBar() {
+  const [query, setQuery] = useState("");
+  const router = useRouter();
 
-    const filtered = products.filter((item) =>
-        item.name
-            .toLowerCase()
-            .includes(search.toLowerCase())
-    );
+  const handleSearch = () => {
+    if (!query.trim()) return;
 
-    return (
-        <>
-            <input
-                type="text"
-                placeholder="Cari produk..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full p-3 rounded-xl bg-zinc-900 border border-zinc-700 mb-8"
-            />
+    router.push(`/?search=${encodeURIComponent(query)}`);
+  };
 
-            {filtered.map((item) => (
-                <div key={item.id}>{item.name}</div>
-            ))}
-        </>
-    );
+  return (
+    <input
+      type="text"
+      placeholder="Cari produk..."
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          handleSearch();
+        }
+      }}
+      className="w-full mb-12 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800"
+    />
+  );
 }

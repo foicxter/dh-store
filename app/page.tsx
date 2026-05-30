@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { supabase } from "../lib/supabase";
+import SearchBar from "@/components/SearchBar";
 
 export default async function Home() {
   const { data: categories } = await supabase
@@ -18,22 +19,28 @@ export default async function Home() {
 
 
   return (
-    <main className="min-h-screen bg-black text-white p-8">
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen text-white relative overflow-hidden">
+    <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-green-500/20 blur-[180px] rounded-full" />
+
+    <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-500/20 blur-[180px] rounded-full" />
+
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-purple-500/10 blur-[200px] rounded-full" />
+
+    <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 blur-[120px]" />
+
+    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 blur-[120px]" />
+
+    <div className="relative z-10 p-8">
 
         <h1 className="text-5xl font-bold mb-4">
-          DH Store
+          DH Store - Premium Apps & Digital Services
         </h1>
 
         <p className="text-zinc-400 mb-8">
-          Premium Apps & Digital Services
+          Jual ChatGPT, Netflix, Spotify, Canva, YouTube Premium, Microsoft 365, VPN dan layanan digital premium dengan harga terjangkau.
         </p>
 
-        <input
-          type="text"
-          placeholder="Cari produk..."
-          className="w-full mb-12 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800"
-        />
+        <SearchBar />
 
         {categories?.map((category) => {
           const categoryProducts =
@@ -70,7 +77,7 @@ export default async function Home() {
                     <Link
                       key={product.id}
                       href={`/produk/${product.slug}`}
-                      className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 block hover:border-zinc-600 hover:bg-zinc-800 transition"
+                      className="rounded-2xl border border-zinc-700 bg-zinc-900/80 backdrop-blur-md p-5 block hover:border-zinc-600 hover:bg-zinc-800 transition hover:shadow-[0_0_30px_rgba(34,197,94,0.25)]"
                     >
                       <div className="flex items-center gap-3 mb-4">
 

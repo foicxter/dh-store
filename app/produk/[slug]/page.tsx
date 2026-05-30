@@ -1,6 +1,19 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import type { Metadata } from "next";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  return {
+    title: `${slug} Premium Murah | DH Store`,
+    description: `Beli ${slug} premium dengan harga terjangkau dan garansi di DH Store.`,
+  };
+}
 export default async function ProductPage({
     params,
 }: {
@@ -30,8 +43,13 @@ export default async function ProductPage({
         .order("price", { ascending: true });
 
     return (
-        <main className="min-h-screen bg-black text-white">
-            <div className="max-w-5xl mx-auto p-8">
+        <main className="min-h-screen text-white relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-green-500/30 blur-[180px] rounded-full" />
+
+            <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-500/30 blur-[180px] rounded-full" />
+
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-purple-500/15 blur-[200px] rounded-full" />
+            <div className="relative z-10 max-w-5xl mx-auto p-8">
 
                 <Link
                     href="/"
