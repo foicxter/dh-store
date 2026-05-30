@@ -16,6 +16,7 @@ export default async function Home() {
     .select("*")
     .eq("is_active", true);
 
+
   return (
     <main className="min-h-screen bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
@@ -24,9 +25,15 @@ export default async function Home() {
           DH Store
         </h1>
 
-        <p className="text-zinc-400 mb-12">
+        <p className="text-zinc-400 mb-8">
           Premium Apps & Digital Services
         </p>
+
+        <input
+          type="text"
+          placeholder="Cari produk..."
+          className="w-full mb-12 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800"
+        />
 
         {categories?.map((category) => {
           const categoryProducts =
@@ -43,16 +50,14 @@ export default async function Home() {
                 {category.name}
               </h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {categoryProducts.map((product) => {
-
                   const productVariants =
                     variants?.filter(
                       (v) => v.product_id === product.id
                     ) || [];
 
-                  const lowestPrice =
+                  const cheapestPrice =
                     productVariants.length > 0
                       ? Math.min(
                         ...productVariants.map(
@@ -65,25 +70,23 @@ export default async function Home() {
                     <Link
                       key={product.id}
                       href={`/produk/${product.slug}`}
-                      className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 block hover:border-zinc-600 hover:bg-zinc-800 transition h-full"
+                      className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 block hover:border-zinc-600 hover:bg-zinc-800 transition"
                     >
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-3 mb-4">
 
-                        {product.icon_url && (
-                          <img
-                            src={product.icon_url}
-                            alt={product.name}
-                            className="w-10 h-10 rounded-lg"
-                          />
-                        )}
+                        <img
+                          src={`/icons/${product.slug}.png`}
+                          alt={product.name}
+                          className="w-12 h-12 rounded-xl object-cover"
+                        />
 
                         <div>
-                          <h3 className="font-semibold">
+                          <h3 className="font-bold text-xl">
                             {product.name}
                           </h3>
 
                           {product.badge && (
-                            <span className="inline-block text-xs bg-orange-500 text-white px-2 py-1 rounded-full mt-1">
+                            <span className="inline-block mt-1 text-xs bg-green-600 px-2 py-1 rounded-full">
                               {product.badge}
                             </span>
                           )}
@@ -91,21 +94,19 @@ export default async function Home() {
 
                       </div>
 
-                      <p className="text-sm text-zinc-400 mt-2 line-clamp-2">
+                      <p className="text-sm text-zinc-400 line-clamp-2 min-h-[40px]">
                         {product.description}
                       </p>
 
-                      {lowestPrice && (
-                        <p className="text-green-400 font-bold mt-4">
+                      {cheapestPrice && (
+                        <p className="mt-4 text-green-400 font-bold text-2xl">
                           Mulai Rp{" "}
-                          {lowestPrice.toLocaleString("id-ID")}
+                          {cheapestPrice.toLocaleString("id-ID")}
                         </p>
                       )}
-
                     </Link>
                   );
                 })}
-
               </div>
             </section>
           );
