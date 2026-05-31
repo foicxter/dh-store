@@ -33,7 +33,7 @@ export default async function Home() {
     <div className="relative z-10 p-8">
 
         <h1 className="text-5xl font-bold mb-4">
-          DH Store - Premium Apps & Digital Services TESTING
+          DH Store Reseller - Premium Apps & Digital Services
         </h1>
 
         <p className="text-zinc-400 mb-8">
