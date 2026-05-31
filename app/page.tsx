@@ -116,13 +116,13 @@ export default async function Home() {
                     ) || [];
 
                   const cheapestPrice =
-                    productVariants.length > 0
-                      ? Math.min(
+                  productVariants.length > 0
+                    ? Math.min(
                         ...productVariants.map(
-                          (v) => v.price || 0
+                          (v) => v.promo_price || v.price || 0
                         )
                       )
-                      : null;
+                    : null;
 
                   return (
                     <Link

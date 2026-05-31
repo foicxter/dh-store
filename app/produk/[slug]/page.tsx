@@ -90,15 +90,15 @@ export default async function ProductPage({
                         <div
                             key={item.id}
                             className="
-bg-zinc-900/70
-backdrop-blur-xl
-border border-zinc-800
-rounded-2xl
-p-6
-transition-all
-duration-300
-hover:border-green-500/40
-"
+                            bg-zinc-900/70
+                            backdrop-blur-xl
+                            border border-zinc-800
+                            rounded-2xl
+                            p-6
+                            transition-all
+                            duration-300
+                            hover:border-green-500/40
+                            "
                         >
                             {item.badge && (
                                 <span className="inline-block mb-3 px-3 py-1 rounded-full bg-green-600 text-sm">
@@ -106,13 +106,49 @@ hover:border-green-500/40
                                 </span>
                             )}
 
+                            <div className="flex items-center justify-between gap-3">
+
+                            <div className="flex items-center justify-between mb-2">
+
                             <h3 className="font-bold text-2xl">
                                 {item.title}
                             </h3>
 
-                            <p className="text-4xl font-bold text-green-400 mt-4">
+                            {item.promo_price && (
+                                <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
+                                PROMO
+                                </span>
+                            )}
+
+                            </div>
+
+                            {item.promo_price && (
+                                <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
+                                PROMO
+                                </span>
+                            )}
+
+                            </div>
+
+                            <div className="mt-4">
+
+                            {item.promo_price ? (
+                                <>
+                                <p className="text-zinc-500 line-through text-lg">
+                                    Rp {item.price?.toLocaleString("id-ID")}
+                                </p>
+
+                                <p className="text-4xl font-bold text-green-400">
+                                    Rp {item.promo_price?.toLocaleString("id-ID")}
+                                </p>
+                                </>
+                            ) : (
+                                <p className="text-4xl font-bold text-green-400">
                                 Rp {item.price?.toLocaleString("id-ID")}
-                            </p>
+                                </p>
+                            )}
+
+                            </div>
 
                             <div className="mt-4 space-y-2 text-zinc-300">
 
