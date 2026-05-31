@@ -17,6 +17,13 @@ export default async function Home() {
     .select("*")
     .eq("is_active", true);
 
+  const promoVariants =
+  variants?.filter(
+    (v) =>
+      v.promo_price &&
+      v.promo_price > 0 &&
+      v.promo_price < v.price
+  ) || [];
 
   return (
     <main className="min-h-screen text-white relative overflow-hidden">
@@ -85,13 +92,95 @@ export default async function Home() {
 
 </div>
 
+    {promoVariants.length > 0 && (
+  <div className="mb-8 rounded-3xl border border-red-500/20 bg-gradient-to-r from-red-500/10 to-orange-500/10 p-6">
+
+    <div className="flex items-center justify-between mb-5">
+      <h2 className="text-2xl font-bold text-red-400">
+        🔥 Promo Hari Ini
+      </h2>
+
+      <span className="text-sm text-zinc-400">
+        {promoVariants.length} Produk Promo
+      </span>
+    </div>
+
+    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {promoVariants.slice(0, 8).map((item) => {
+
+        const discount =
+          Math.round(
+            ((item.price - item.promo_price) /
+              item.price) *
+              100
+          );
+
+        const saving =
+          item.price - item.promo_price;
+
+        return (
+          <div
+            key={item.id}
+            className="bg-zinc-900/80 border border-zinc-700 rounded-2xl p-4"
+          >
+            <p className="font-semibold line-clamp-2">
+              {item.title}
+            </p>
+
+            <p className="text-zinc-500 text-sm line-through">
+              Rp {item.price.toLocaleString("id-ID")}
+            </p>
+
+            <p className="text-red-400 font-bold text-xl">
+              Rp {item.promo_price.toLocaleString("id-ID")}
+            </p>
+
+            <div className="flex gap-2 mt-3 flex-wrap">
+
+              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                -{discount}%
+              </span>
+
+              <span className="bg-green-600 text-white text-xs px-2 py-1 rounded-full">
+                Hemat Rp {saving.toLocaleString("id-ID")}
+              </span>
+
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+)}
+
         <SearchBar />
 
         {categories?.map((category) => {
           const categoryProducts =
-            products?.filter(
-              (p) => p.category_id === category.id
-            ) || [];
+  products?.filter(
+    (p) => p.category_id === category.id
+  ) || [];
+
+const sortedProducts = [...categoryProducts].sort(
+  (a, b) => {
+
+    const aPromo = variants?.some(
+      (v) =>
+        v.product_id === a.id &&
+        v.promo_price &&
+        v.promo_price > 0
+    );
+
+    const bPromo = variants?.some(
+      (v) =>
+        v.product_id === b.id &&
+        v.promo_price &&
+        v.promo_price > 0
+    );
+
+    return Number(bPromo) - Number(aPromo);
+  }
+);
 
           return (
             <section
@@ -109,7 +198,7 @@ export default async function Home() {
 </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                {categoryProducts.map((product) => {
+                {sortedProducts.map((product) => {
                   const productVariants =
                     variants?.filter(
                       (v) => v.product_id === product.id
