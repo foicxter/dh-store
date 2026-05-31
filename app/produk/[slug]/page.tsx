@@ -176,7 +176,7 @@ export default async function ProductPage({
 
                                 <a
                                     href={`https://wa.me/6289510588347?text=${encodeURIComponent(
-                                        `Halo Beb, saya ingin membeli:
+                                        `Halo Kakk Dhean, beli donkkkk:
 
 Produk: ${product.name}
 Paket: ${item.title}
