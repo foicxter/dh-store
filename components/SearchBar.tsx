@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <input
       type="text"
-      placeholder="Cari produk..."
+      placeholder="BELUM BISA DIPAKE HEHE..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
       onKeyDown={(e) => {

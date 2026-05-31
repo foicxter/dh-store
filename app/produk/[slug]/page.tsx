@@ -89,7 +89,16 @@ export default async function ProductPage({
                     {variants?.map((item) => (
                         <div
                             key={item.id}
-                            className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6"
+                            className="
+bg-zinc-900/70
+backdrop-blur-xl
+border border-zinc-800
+rounded-2xl
+p-6
+transition-all
+duration-300
+hover:border-green-500/40
+"
                         >
                             {item.badge && (
                                 <span className="inline-block mb-3 px-3 py-1 rounded-full bg-green-600 text-sm">

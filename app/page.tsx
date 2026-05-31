@@ -30,15 +30,60 @@ export default async function Home() {
 
     <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 blur-[120px]" />
 
-    <div className="relative z-10 p-8">
+    <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
 
-        <h1 className="text-5xl font-bold mb-4">
-          DH Store Reseller - Premium Apps & Digital Services
-        </h1>
+        <div className="mb-8">
 
-        <p className="text-zinc-400 mb-8">
-          Jual ChatGPT, Netflix, Spotify, Canva, YouTube Premium, Microsoft 365, VPN dan layanan digital premium dengan harga terjangkau.
-        </p>
+  <span className="inline-block px-4 py-2 rounded-full bg-green-500/20 text-green-400 text-sm font-medium mb-4">
+    🔥 Harga Reseller
+  </span>
+
+  <div className="flex items-center gap-6">
+
+    <img
+      src="/icons/dh-store-logo.png"
+      alt="DH Store"
+      className="
+        h-20
+        w-auto
+        object-contain
+        drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]
+      "
+    />
+
+    <div>
+      <h1 className="text-4xl lg:text-5xl font-bold">
+        DH Store Reseller
+      </h1>
+
+      <p className="text-zinc-400 mt-2 text-lg">
+        Premium Apps & Digital Services
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+        <p className="text-zinc-400 text-lg mb-8 max-w-4xl">
+  Jual ChatGPT, Netflix, Spotify, Canva, YouTube Premium, Microsoft 365, VPN dan layanan digital premium dengan harga reseller terbaik.
+</p>
+
+<div className="flex flex-wrap gap-3 mb-8">
+
+  <div className="px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-700">
+    ✅ 50+ Produk
+  </div>
+
+  <div className="px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-700">
+    ⚡ Fast Response
+  </div>
+
+  <div className="px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-700">
+    💰 Harga Reseller
+  </div>
+
+</div>
 
         <SearchBar />
 
@@ -53,9 +98,15 @@ export default async function Home() {
               key={category.id}
               className="mb-16"
             >
-              <h2 className="text-3xl font-bold mb-6">
-                {category.name}
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+
+  <div className="w-1.5 h-8 rounded-full bg-green-500" />
+
+  <h2 className="text-3xl font-bold">
+    {category.name}
+  </h2>
+
+</div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {categoryProducts.map((product) => {
@@ -77,12 +128,23 @@ export default async function Home() {
                     <Link
                       key={product.id}
                       href={`/produk/${product.slug}`}
-                      className="rounded-2xl border border-zinc-700 bg-zinc-900/80 backdrop-blur-md p-5 block hover:border-zinc-600 hover:bg-zinc-800 transition hover:shadow-[0_0_30px_rgba(34,197,94,0.25)]"
-                    >
+                      className="
+                      rounded-2xl
+                      border border-zinc-800
+                      bg-zinc-900/50
+                      backdrop-blur-xl
+                      p-5
+                      block
+                      transition-all
+                      duration-300
+                      hover:-translate-y-1
+                      hover:border-green-500/40
+                      hover:shadow-[0_0_30px_rgba(34,197,94,0.2)]
+"                    >
                       <div className="flex items-center gap-3 mb-4">
 
                         <img
-                          src={`/icons/${product.slug}.png`}
+                         src={`/icons/${product.slug}.png`}
                           alt={product.name}
                           className="w-12 h-12 rounded-xl object-cover"
                         />
