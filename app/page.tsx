@@ -41,7 +41,7 @@ export default async function Home() {
 
         <div className="mb-8">
 
-  <span className="inline-block px-4 py-2 rounded-full bg-green-500/20 text-green-400 text-sm font-medium mb-4">
+  <span className="inline-block px-3 py-1.5 rounded-full bg-green-500/20 text-green-400 text-sm font-medium mb-4">
     🔥 Harga Reseller
   </span>
 
@@ -51,7 +51,7 @@ export default async function Home() {
       src="/icons/dh-store-logo.png"
       alt="DH Store"
       className="
-        h-20
+        h-14
         w-auto
         object-contain
         drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]
@@ -59,7 +59,7 @@ export default async function Home() {
     />
 
     <div>
-      <h1 className="text-4xl lg:text-5xl font-bold">
+      <h1 className="text-3xl lg:text-4xl font-bold">
         DH Store Reseller
       </h1>
 
@@ -78,15 +78,15 @@ export default async function Home() {
 
 <div className="flex flex-wrap gap-3 mb-8">
 
-  <div className="px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-700">
+  <div className="px-3 py-1.5 rounded-xl bg-zinc-900/60 border border-zinc-700">
     ✅ 50+ Produk
   </div>
 
-  <div className="px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-700">
+  <div className="px-3 py-1.5 rounded-xl bg-zinc-900/60 border border-zinc-700">
     ⚡ Fast Response
   </div>
 
-  <div className="px-4 py-2 rounded-xl bg-zinc-900/60 border border-zinc-700">
+  <div className="px-3 py-1.5 rounded-xl bg-zinc-900/60 border border-zinc-700">
     💰 Harga Reseller
   </div>
 
@@ -131,7 +131,7 @@ export default async function Home() {
               Rp {item.price.toLocaleString("id-ID")}
             </p>
 
-            <p className="text-red-400 font-bold text-xl">
+            <p className="text-red-400 font-bold text-lg">
               Rp {item.promo_price.toLocaleString("id-ID")}
             </p>
 
@@ -197,7 +197,7 @@ const sortedProducts = [...categoryProducts].sort(
 
 </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {sortedProducts.map((product) => {
                   const productVariants =
                     variants?.filter(
@@ -222,7 +222,7 @@ const sortedProducts = [...categoryProducts].sort(
                       border border-zinc-800
                       bg-zinc-900/50
                       backdrop-blur-xl
-                      p-5
+                      p-4
                       block
                       transition-all
                       duration-300
@@ -235,11 +235,11 @@ const sortedProducts = [...categoryProducts].sort(
                         <img
                          src={`/icons/${product.slug}.png`}
                           alt={product.name}
-                          className="w-12 h-12 rounded-xl object-cover"
+                          className="w-9 h-9 rounded-xl object-cover"
                         />
 
                         <div>
-                          <h3 className="font-bold text-xl">
+                          <h3 className="font-bold text-lg">
                             {product.name}
                           </h3>
 
@@ -257,7 +257,7 @@ const sortedProducts = [...categoryProducts].sort(
                       </p>
 
                       {cheapestPrice && (
-                        <p className="mt-4 text-green-400 font-bold text-2xl">
+                        <p className="mt-3 text-green-400 font-bold text-xl">
                           Mulai Rp{" "}
                           {cheapestPrice.toLocaleString("id-ID")}
                         </p>

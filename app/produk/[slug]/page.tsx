@@ -63,11 +63,11 @@ export default async function ProductPage({
                     <img
                         src={`/icons/${product.slug}.png`}
                         alt={product.name}
-                        className="w-14 h-14 rounded-xl"
+                        className="w-10 h-10 rounded-xl"
                     />
 
                     <div>
-                        <h1 className="text-4xl font-bold">
+                        <h1 className="text-3xl font-bold">
                             {product.name}
                         </h1>
 
@@ -84,7 +84,7 @@ export default async function ProductPage({
                     {product.description}
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid md:grid-cols-2 gap-3">
 
                     {variants?.map((item) => (
                         <div
@@ -94,7 +94,7 @@ export default async function ProductPage({
                             backdrop-blur-xl
                             border border-zinc-800
                             rounded-2xl
-                            p-6
+                            p-4
                             transition-all
                             duration-300
                             hover:border-green-500/40
@@ -138,12 +138,12 @@ export default async function ProductPage({
                                     Rp {item.price?.toLocaleString("id-ID")}
                                 </p>
 
-                                <p className="text-4xl font-bold text-green-400">
+                                <p className="text-3xl font-bold text-green-400">
                                     Rp {item.promo_price?.toLocaleString("id-ID")}
                                 </p>
                                 </>
                             ) : (
-                                <p className="text-4xl font-bold text-green-400">
+                                <p className="text-3xl font-bold text-green-400">
                                 Rp {item.price?.toLocaleString("id-ID")}
                                 </p>
                             )}
