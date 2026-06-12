@@ -42,6 +42,7 @@ export default async function ProductPage({
         .eq("is_active", true)
         .order("price", { ascending: true });
 
+    
     return (
         <main className="min-h-screen text-white relative overflow-hidden">
             <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-green-500/30 blur-[180px] rounded-full" />
@@ -106,25 +107,15 @@ export default async function ProductPage({
                                 </span>
                             )}
 
-                            <div className="flex items-center justify-between gap-3">
+                            <div className="flex items-start justify-between gap-3">
 
-                            <div className="flex items-center justify-between mb-2">
-
-                            <h3 className="font-bold text-2xl">
+                            <h3 className="font-bold text-xl leading-tight">
                                 {item.title}
                             </h3>
 
                             {item.promo_price && (
-                                <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
-                                PROMO
-                                </span>
-                            )}
-
-                            </div>
-
-                            {item.promo_price && (
-                                <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
-                                PROMO
+                                <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                                🔥 PROMO
                                 </span>
                             )}
 
@@ -146,6 +137,14 @@ export default async function ProductPage({
                                 <p className="text-3xl font-bold text-green-400">
                                 Rp {item.price?.toLocaleString("id-ID")}
                                 </p>
+                            )}
+
+                            {item.promo_note && (
+                             <div className="mt-1 rounded-lg bg-yellow-400/10 border border-yellow-400/10 p-3">
+                              <p className="text-sm text-yellow-500">
+                            📌 Syarat Promo: {item.promo_note}
+                                </p>
+                            </div>
                             )}
 
                             </div>

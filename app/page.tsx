@@ -134,6 +134,11 @@ export default async function Home() {
             <p className="text-red-400 font-bold text-lg">
               Rp {item.promo_price.toLocaleString("id-ID")}
             </p>
+            {item.promo_note && (
+              <p className="text-xs text-zinc-400 mt-2">
+             📌 {item.promo_note}
+            </p> 
+            )}
 
             <div className="flex gap-2 mt-3 flex-wrap">
 
